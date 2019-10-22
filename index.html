@@ -9,15 +9,22 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilo.css">
 
 	<script>
+		/*
+			Função iniciarJogo() verifica o nível informado no section 'nivel' e primeiro
+			verifica se o jogador selecionou um valor válido. Apresentando um alert
+			caso o jogador não selecione, caso o if não ocorra é chamado o link do app
+			passando o nível selecionando como parametro no próprio href
+		*/
 
 		function iniciarJogo(){
 			var nivel = document.getElementById('nivel').value
+			
 			if(nivel === ''){
 				alert('Selecione o nível para iniciar o jogo')
 				return false
 			}
 
-			alert(nivel)
+			window.location.href = "app.html?" + nivel
 		}
 
 	</script>

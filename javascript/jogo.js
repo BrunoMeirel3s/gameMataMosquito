@@ -8,6 +8,29 @@ var largura = 0
 var vidas = 1
 var tempo = 10
 
+var criaMosquitoTempo = 1500
+
+/*
+	variável nivel recebe o link passado na url, após isso substitui o '?'
+	que vem por padrão pelo valor vazio.
+*/
+var nivel = window.location.search
+nivel = nivel.replace('?','')
+
+
+/*
+	dependendo do nível informado é ajustado a variável criaMosquitoTempo
+	que é usada no app.html para setar a velocidade de execução da função
+	setInterval.
+*/
+if(nivel === 'facil'){
+	criaMosquitoTempo = 1500
+}else if(nivel === 'medio'){
+	criaMosquitoTempo = 1000
+}else if(nivel ==='dificil'){
+	criaMosquitoTempo = 750
+}
+
 function ajustaTamanhoPalcoJogo(){
 	altura = window.innerHeight
 	largura = window.innerWidth
@@ -91,15 +114,20 @@ mosquito.style.top = posicaoY + 'px'
 mosquito.style.position = 'absolute'
 mosquito.id = 'mosquito'
 
+//adicionando o elemento criado a arvore de elementos do documento html
+document.body.appendChild(mosquito)
+
+
+/*
+	mosquito.onclick configura a ação de clicar na imagem do mosquito,
+	quando clicado é removido a função criaMosquito() por isso usamos
+	o this.remove() para referenciar a função ao qual o mosquito.onclick
+	está encorporada.
+*/
 mosquito.onclick = function(){
 	this.remove()
 }
 
-//adicionando o elemento criado a arvore de elementos do documento html
-document.body.appendChild(mosquito)
-
-console.log(tamanhoAleatorio())
-console.log(ladoAleatorio())
 
 }
 
